@@ -7,8 +7,8 @@ on:
 
 jobs:
   publish:
-    # permissions:
-    # contents: write
+    permissions:
+      contents: write
     strategy:
       fail-fast: false
       matrix:
@@ -39,7 +39,7 @@ jobs:
       - name: install frontend dependencies
         run: npm install
 
-      # 5. 运行 Tauri 官方提供的打包动作
+      # . 运行 Tauri 官方提供的打包动作
       - name: build and upload
         uses: tauri-apps/tauri-action@v0
         env:
