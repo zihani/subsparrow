@@ -14,3 +14,9 @@ npm run tauri dev
 
 ## 打包
 npm run tauri build
+
+## 打标签
+git tag v1.0.0
+
+## 推送标签
+git push --tags

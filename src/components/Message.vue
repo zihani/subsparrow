@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onUnmounted, Teleport, watch } from 'vue';
+import { computed, onUnmounted, watch } from 'vue';
 
 type MessageType = 'success' | 'warning' | 'info' | 'error';
 
@@ -105,8 +105,6 @@ const icon = computed(() => {
       return 'ℹ';
   }
 });
-
-const type = computed(() => props.type);
 </script>
 
 <style scoped>

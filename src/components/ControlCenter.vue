@@ -56,14 +56,6 @@ interface Props {
   maxHeight?: number;
 }
 
-interface MenuItem {
-  id: string;
-  label: string;
-  icon: string;
-  active: boolean;
-  status?: string;
-}
-
 interface NetworkInterface {
   name: string;
   ip: string;
