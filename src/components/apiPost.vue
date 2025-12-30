@@ -162,7 +162,7 @@ const messageType = ref<'success' | 'warning' | 'info' | 'error'>('info');
 const messageText = ref('');
 
 // 显示消息的辅助函数
-const showMsg = (type: 'success' | 'warning' | 'info' | 'error', text: string, duration = 3000) => {
+const showMsg = (type: 'success' | 'warning' | 'info' | 'error', text: string) => {
   messageType.value = type;
   messageText.value = text;
   showMessage.value = true;
