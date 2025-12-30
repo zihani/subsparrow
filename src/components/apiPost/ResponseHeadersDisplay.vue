@@ -5,7 +5,7 @@
         <span>Header</span><span>Value</span>
       </div>
       <div class="table-row" v-for="(v,k) in responseHeaders" :key="k">
-        <span>{{ k }}</span><span>{{ v }}</span>
+        <span><code>{{ k }}</code></span><span><code>{{ v }}</code></span>
       </div>
     </div>
   </div>
@@ -35,5 +35,13 @@ const props = defineProps<{
 .table-head {
   font-weight: bold;
   border-bottom: 1px solid #dcdfe6;
+}
+.table code {
+  background: #f9fafc;
+  padding: 2px 4px;
+  border-radius: 3px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  display: inline-block;
 }
 </style>

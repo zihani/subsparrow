@@ -61,7 +61,58 @@ const removeRow = (index: number) => {
   gap: 8px;
   align-items: center;
 }
+.table-head {
+  font-weight: 500;
+  color: #606266;
+  font-size: 14px;
+}
+.table-row input {
+  padding: 8px 12px;
+  border: 1px solid #dcdfe6;
+  border-radius: 4px;
+  font-size: 14px;
+  height: 36px;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+.table-row input:focus {
+  outline: none;
+  border-color: #409eff;
+}
+.table-row button {
+  padding: 6px 16px;
+  border: 1px solid #dcdfe6;
+  border-radius: 4px;
+  background: #fff;
+  color: #606266;
+  font-size: 14px;
+  height: 36px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s;
+}
+.table-row button:hover {
+  color: #409eff;
+  border-color: #c6e2ff;
+  background-color: #ecf5ff;
+}
 .table-actions {
   margin-top: 8px;
+}
+.table-actions button {
+  padding: 8px 20px;
+  border: 1px solid #dcdfe6;
+  border-radius: 4px;
+  background: #fff;
+  color: #606266;
+  font-size: 14px;
+  height: 36px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.table-actions button:hover {
+  color: #409eff;
+  border-color: #409eff;
+  background-color: #ecf5ff;
 }
 </style>

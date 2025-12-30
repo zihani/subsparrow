@@ -1,6 +1,6 @@
 <template>
   <div class="response-display">
-    <pre class="response-pre">{{ prettyJson(responseData) }}</pre>
+    <pre class="response-pre"><code>{{ prettyJson(responseData) }}</code></pre>
   </div>
 </template>
 
@@ -32,5 +32,10 @@ const prettyJson = (data: any) => {
   white-space: pre-wrap;
   word-wrap: break-word;
   margin: 0;
+}
+.response-pre code {
+  display: block;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 </style>

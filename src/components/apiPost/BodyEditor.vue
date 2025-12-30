@@ -141,24 +141,45 @@ const onBinaryFileChange = (ev: Event) => {
 }
 .form {
   display: grid;
-  gap: 8px;
+  gap: 12px;
 }
 .form label {
   display: flex;
   gap: 8px;
   align-items: center;
+  font-size: 14px;
+  color: #606266;
+}
+.form label:first-child {
+  min-width: 80px;
 }
 .form select,
 .form input,
 .form textarea {
   flex: 1;
-  padding: 8px;
+  padding: 8px 12px;
   border: 1px solid #dcdfe6;
   border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+.form select,
+.form input[type="text"],
+.form input[type="file"] {
+  height: 36px;
 }
 .form textarea {
   width: 100%;
   resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+}
+.form select:focus,
+.form input:focus,
+.form textarea:focus {
+  outline: none;
+  border-color: #409eff;
 }
 .table {
   display: grid;
@@ -171,7 +192,9 @@ const onBinaryFileChange = (ev: Event) => {
 }
 .table-head {
   grid-template-columns: 1fr 1fr auto;
-  font-weight: bold;
+  font-weight: 500;
+  color: #606266;
+  font-size: 14px;
 }
 .table-row {
   grid-template-columns: 1fr 1fr auto;
@@ -179,7 +202,53 @@ const onBinaryFileChange = (ev: Event) => {
 .table-head.form-data, .table-row.form-data {
   grid-template-columns: 1fr 1fr 1fr auto;
 }
+.table-row input {
+  padding: 8px 12px;
+  border: 1px solid #dcdfe6;
+  border-radius: 4px;
+  font-size: 14px;
+  height: 36px;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+.table-row input:focus {
+  outline: none;
+  border-color: #409eff;
+}
+.table-row button {
+  padding: 6px 16px;
+  border: 1px solid #dcdfe6;
+  border-radius: 4px;
+  background: #fff;
+  color: #606266;
+  font-size: 14px;
+  height: 36px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s;
+}
+.table-row button:hover {
+  color: #409eff;
+  border-color: #c6e2ff;
+  background-color: #ecf5ff;
+}
 .table-actions {
   margin-top: 8px;
+}
+.table-actions button {
+  padding: 8px 20px;
+  border: 1px solid #dcdfe6;
+  border-radius: 4px;
+  background: #fff;
+  color: #606266;
+  font-size: 14px;
+  height: 36px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.table-actions button:hover {
+  color: #409eff;
+  border-color: #409eff;
+  background-color: #ecf5ff;
 }
 </style>

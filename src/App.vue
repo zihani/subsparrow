@@ -1,38 +1,48 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { invoke } from "@tauri-apps/api/core";
+import { open } from "@tauri-apps/plugin-dialog";
+import { writeTextFile } from "@tauri-apps/plugin-fs";
+import * as pathApi from "@tauri-apps/api/path";
+import ControlCenter from './components/ControlCenter.vue';
+import apiPost from "./components/apiPost.vue";
+const isPanelOpen = ref(false);
+const selectedDir = ref<string | null>("");
+const inputText = ref("");
 
-const greetMsg = ref("");
-const name = ref("");
+async function chooseDir() {
+  const result = await open({
+    directory: true,
+    multiple: false
+  });
+  if (typeof result === "string") {
+    selectedDir.value = result;
+  } else if (Array.isArray(result)) {
+    selectedDir.value = result[0] ?? null;
+  } else {
+    selectedDir.value = null;
+  }
+}
 
-async function greet() {
-  // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-  greetMsg.value = await invoke("greet", { name: name.value });
+async function saveText() {
+  if (!selectedDir.value || !inputText.value) return;
+  const filePath = await pathApi.join(selectedDir.value, "output.txt");
+  await writeTextFile(filePath, inputText.value);
 }
 </script>
 
 <template>
+  <ControlCenter v-model="isPanelOpen" :maxHeight="550"></ControlCenter>
   <main class="container">
-    <h1>Welcome to Tauri + Vue</h1>
-
-    <div class="row">
-      <a href="https://vite.dev" target="_blank">
-        <img src="/vite.svg" class="logo vite" alt="Vite logo" />
-      </a>
-      <a href="https://tauri.app" target="_blank">
-        <img src="/tauri.svg" class="logo tauri" alt="Tauri logo" />
-      </a>
-      <a href="https://vuejs.org/" target="_blank">
-        <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-      </a>
-    </div>
-    <p>Click on the Tauri, Vite, and Vue logos to learn more.</p>
-
-    <form class="row" @submit.prevent="greet">
-      <input id="greet-input" v-model="name" placeholder="Enter a name..." />
-      <button type="submit">Greet</button>
-    </form>
-    <p>{{ greetMsg }}</p>
+      <div style="margin-bottom: 12px;">
+        <apiPost />
+        <input v-model="inputText" placeholder="输入文本内容..." style="width: 60%;" />
+      </div>
+      <div style="margin-bottom: 12px;">
+        <button @click="chooseDir">选择目录</button>
+        <input :disabled="true"  style="width: 60%;" placeholder="未选择目录..." v-model="selectedDir" />
+        <button @click="saveText">保存</button>
+        <button @click="selectedDir = ''">清空</button>
+      </div>
   </main>
 </template>
 
@@ -65,7 +75,7 @@ async function greet() {
 
 .container {
   margin: 0;
-  padding-top: 10vh;
+  padding-top: 5vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

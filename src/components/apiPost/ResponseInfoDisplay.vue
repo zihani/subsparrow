@@ -1,8 +1,8 @@
 <template>
   <div class="response-info-display">
     <div class="info">
-      <div>状态：{{ responseStatus ?? '-' }}</div>
-      <div>耗时：{{ responseTime ?? '-' }} ms</div>
+      <div>状态：<code>{{ responseStatus ?? '-' }}</code></div>
+      <div>耗时：<code>{{ responseTime ?? '-' }} ms</code></div>
     </div>
   </div>
 </template>
@@ -24,5 +24,10 @@ const props = defineProps<{
 }
 .info > div {
   padding: 4px 0;
+}
+.info code {
+  background: #f9fafc;
+  padding: 2px 4px;
+  border-radius: 3px;
 }
 </style>
