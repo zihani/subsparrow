@@ -15,6 +15,15 @@ npm run tauri dev
 ## 打包
 npm run tauri build
 
+## 类型检查
+npm run type-check
+
+## 代码检查
+npm run lint:check
+
+## 自动修复代码问题
+npm run lint
+
 ## 打标签
 git tag v1.0.0
 
