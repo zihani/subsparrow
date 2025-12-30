@@ -80,16 +80,16 @@
       <div class="tab-content">
         <ResponseDisplay
           v-if="activeResponseTab==='responseBody'"
-          :response-data="responseData"
+          :responseData="responseData"
         />
         <ResponseHeadersDisplay
           v-else-if="activeResponseTab==='responseHeaders'"
-          :response-headers="responseHeaders"
+          :responseHeaders="responseHeaders"
         />
         <ResponseInfoDisplay
           v-else
-          :response-status="responseStatus"
-          :response-time="responseTime"
+          :responseStatus="responseStatus"
+          :responseTime="responseTime"
         />
       </div>
     </div>
@@ -162,7 +162,7 @@ const messageType = ref<'success' | 'warning' | 'info' | 'error'>('info');
 const messageText = ref('');
 
 // 显示消息的辅助函数
-const showMsg = (type: 'success' | 'warning' | 'info' | 'error', text: string, duration = 3000) => {
+const showMsg = (type: 'success' | 'warning' | 'info' | 'error', text: string) => {
   messageType.value = type;
   messageText.value = text;
   showMessage.value = true;
