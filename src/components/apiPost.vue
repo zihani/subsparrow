@@ -340,7 +340,7 @@ const sendRequest = async () => {
     responseHeaders.value = Object.fromEntries(Object.entries(res.headers || {}).map(([k, v]) => [k, String(v)]));
     responseStatus.value = res.status;
     responseTime.value = elapsed;
-    showMsg('success', `请求成功 (${res.status})`, 2000);
+    showMsg('success', `请求成功 (${res.status})`);
     activeResponseTab.value = 'responseBody';
   } catch (e: any) {
     const elapsed = Math.round(performance.now() - started);
@@ -469,7 +469,7 @@ const importFromFile = async () => {
 
     // 导入后存一份到 localStorage
     saveToLocal();
-    showMsg('success', '配置导入成功', 2000);
+    showMsg('success', '配置导入成功');
   } catch (error: any) {
     console.error('导入配置失败:', error);
     showMsg('error', error?.message || '导入配置失败');
@@ -556,7 +556,7 @@ const exportToFile = async () => {
       // 将数据格式化为 JSON 字符串（美化格式）
       const jsonContent = JSON.stringify(exportData, null, 2);
       await writeTextFile(filePath, jsonContent);
-      showMsg('success', '导出成功', 2000);
+      showMsg('success', '导出成功');
     }
   } catch (error: any) {
     console.error('导出失败:', error);
@@ -575,7 +575,7 @@ const clearData = () => {
   }
   try {
     localStorage.removeItem('apiPost:last')
-    showMsg('success', '已清空输入数据', 2000);
+    showMsg('success', '已清空输入数据');
   } catch {
     showMsg('error', '清空数据失败');
   }
